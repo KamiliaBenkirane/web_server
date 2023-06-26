@@ -22,7 +22,6 @@ const pool = new Pool({
 });
 
 app.get("/getUser", (req, res) => {
-    console.log("coucou")
     const sql = "SELECT * FROM public.users";
     pool.query(sql, [], (err, result) => {
         if (err) {
@@ -97,7 +96,6 @@ app.post("/createBook", (req, res) => {
 });
 
 app.get("/getBook", (req, res) => {
-    console.log("coucou2")
     const sql = "SELECT * FROM public.livres ORDER BY id ASC ";
     pool.query(sql, [], (err, result) => {
         if (err) {
@@ -281,7 +279,6 @@ app.post("/getCommandes", (req, res)=>{
 
 
 app.get("/getCommandesAdmin", (req, res) => {
-    console.log("coucou2")
     const sqlQuery = "SELECT users.id, mail, prenom, nom, date,\"time\", statut, id_livre, commandes.quantite, num_commande, image, titre FROM public.commandes join public.livres ON commandes.id_livre = livres.id join public.users ON commandes.id_user = users.id order by num_commande DESC;";
     pool.query(sqlQuery, [], (err, result) => {
         if (err) {
